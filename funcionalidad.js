@@ -1,7 +1,7 @@
 import { Aereo } from "./aereo.js";
 import { Terrestre } from "./terrestre.js";
 import { data } from "./data.js";
-import * as funciones from "./validaciones.js";
+import * as validaciones from "./validaciones.js";
 
 //*************************************** 1ER FORM ***************************************
 
@@ -302,14 +302,14 @@ document.getElementById("btnAlta").addEventListener("click", function(event)
     if(tipo === "aereo") 
     {
         
-        if(!funciones.validarCampoVacio(modelo, anoFab, velMax, altMax, autonomia))
+        if(!validaciones.validarCampoVacio(modelo, anoFab, velMax, altMax, autonomia))
         {
             alert("No pueden quedar campos vacíos");
             return ;
         }
         else if(anoFab <= 1885)
         {
-            alert("El año de fab debe ser mayor a 1885");
+            alert("El año de fabricacion debe ser mayor a 1885");
             return ;
         }
         const nuevoAereo = new Aereo(idUnico, modelo, anoFab, velMax, altMax, autonomia);
@@ -318,14 +318,14 @@ document.getElementById("btnAlta").addEventListener("click", function(event)
     } 
     else if(tipo === "terrestre") 
     {
-        if(!funciones.validarCampoVacio(modelo, anoFab, velMax, cantPue, cantRue))
+        if(!validaciones.validarCampoVacio(modelo, anoFab, velMax, cantPue, cantRue))
         {
             alert("No pueden quedar campos vacíos");
             return ;
         }
         else if(anoFab <= 1885)
         {
-            alert("El año de fab debe ser mayor a 1885");
+            alert("El año de fabricacion debe ser mayor a 1885");
             return ;
         }
         const nuevoTerrestre = new Terrestre(idUnico, modelo, anoFab, velMax, cantPue, cantRue);
@@ -358,7 +358,7 @@ document.getElementById("btnModificar").addEventListener("click", function(event
     {
         if(tipo === "aereo") 
         {
-            if(!funciones.validarCampoVacio(modelo, anoFab, velMax, altMax, autonomia))
+            if(!validaciones.validarCampoVacio(modelo, anoFab, velMax, altMax, autonomia))
             {
                 alert(`No pueden quedar campos vacíos`);
                 return ;
@@ -372,7 +372,7 @@ document.getElementById("btnModificar").addEventListener("click", function(event
         } 
         else if(tipo === "terrestre") 
         {
-            if(!funciones.validarCampoVacio(modelo, anoFab, velMax, cantPue, cantRue))
+            if(!validaciones.validarCampoVacio(modelo, anoFab, velMax, cantPue, cantRue))
             {
                 alert(`No pueden quedar campos vacíos`);
                 return ;
@@ -432,13 +432,13 @@ function controlarDatosIngresados()
     const cantPue = document.getElementById("cantPue");
     const cantRue = document.getElementById("cantRue");
 
-    funciones.validarSoloLetras(modelo);
-    funciones.validarSoloNumerosEnteros(anoFab);
-    funciones.validarSoloNumerosEnteros(velMax);
-    funciones.validarSoloNumeros(altMax);
-    funciones.validarSoloNumeros(autonomia);
-    funciones.validarSoloNumerosEnteros(cantPue);
-    funciones.validarSoloNumerosEnteros(cantRue);  
+    validaciones.validarSoloLetras(modelo);
+    validaciones.validarSoloNumerosEnteros(anoFab);
+    validaciones.validarSoloNumerosEnteros(velMax);
+    validaciones.validarSoloNumeros(altMax);
+    validaciones.validarSoloNumeros(autonomia);
+    validaciones.validarSoloNumerosEnteros(cantPue);
+    validaciones.validarSoloNumerosEnteros(cantRue);  
 }
 
 function blanquearInputs()
